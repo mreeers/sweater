@@ -1,5 +1,6 @@
 package com.example.sweater.domain;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -15,13 +16,18 @@ public class Message {
     @JoinColumn(name = "user_id")
     private User author;
 
-    public Message(String text, String tag, User user) {
-        this.text = text;
-        this.tag = tag;
-        this.author = user;
+    private String filename;
+
+    public Message() {
     }
 
-    public String getAuthorName(){
+    public Message(String text, String tag, User user) {
+        this.author = user;
+        this.text = text;
+        this.tag = tag;
+    }
+
+    public String getAuthorName() {
         return author != null ? author.getUsername() : "<none>";
     }
 
@@ -33,8 +39,6 @@ public class Message {
         this.author = author;
     }
 
-    public Message() {
-    }
     public void setText(String text) {
         this.text = text;
     }
@@ -57,5 +61,13 @@ public class Message {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }
